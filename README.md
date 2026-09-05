@@ -1,6 +1,5 @@
 # FarmByte
 ![Lobby](assets/lobby.png)
-![Spelvy](assets/game.png)
 
 FarmByte är ett webbaserat, gamifierat lärspel där du lär dig grunderna i programmeringsspråket Java genom att bygga och utveckla din egen bondgård.
 
@@ -28,6 +27,8 @@ Web Storage API: localStorage för hantering av användardata och spelstatus.
 
 
 # Spelupplägg & Lektioner
+![Spelvy](assets/game.png)
+
 Uppdrag 01: Skapa din första String-variabel och skriv ut gårdens namn.
 
 Uppdrag 02: Hantera heltal (int) för att plantera frön.
