@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FarmByte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" />
+
+  </head>
+  <body>
+    <section class="lobby" id="lobby">
+      <div class="lobby-copy">
+        <div class="eyebrow">Java, fast på riktigt</div>
+        <h1>Bygg en gård.<br /><span>Skriv koden.</span></h1>
+        <p class="intro">
+          Ett lärspel där varje rad Java gör din bondgård lite större. Börja som
+          nybörjare. Sluta som kodbonde.
+        </p>
+        <div class="cta-row">
+          <button class="primary" id="openSignup">
+            Starta din gård
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button class="text-btn" id="openLogin">
+            Jag har redan ett konto
+          </button>
+        </div>
+        <div class="fineprint">
+          Gratis att börja · Inga förkunskaper krävs · Lär genom att göra
+        </div>
+      </div>
+      <div class="lobby-art">
+        <div class="grain"></div>
+        <img src="logo.png" alt="FarmByte bondgård med Java-kod" />
+      </div>
+    </section>
+
+    <section class="app hidden" id="app">
+      <aside class="sidebar">
+        <div class="brand side-brand">
+          <h1>Farm<span>Byte</span></h1>
+        </div>
+        <div class="nav-label">Din värld</div>
+        <nav class="nav">
+          <button class="active" data-view="dashboard">
+            <span id="navHomeIcon"></span> Min gård
+          </button>
+          <button data-view="challenge"><span id="navLearnIcon"></span> Lär dig Java</button>
+          <button data-view="shop"><span id="navShopIcon"></span> Butik</button>
+        </nav>
+        <div class="side-bottom">
+          <div class="user-row">
+            <div class="avatar" id="sideAvatar"></div>
+            <div>
+              <b id="sideName">Ny bonde</b><br />
+              <span style="opacity: 0.65" id="sideLevelText">Nivå 1 · Uppdrag 1</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="topbar">
+          <div class="crumb" id="crumbText">
+            FARMBYTE <span style="margin: 0 7px">/</span> MIN GÅRD
+          </div>
+          <div class="coin-badge icon-inline">
+            <span id="coinIconHeader"></span> <span id="topCoinCount">0</span> Farmcoins
+          </div>
+        </div>
+
+        <div id="dashboardView">
+          <div class="heading">
+            <div>
+              <p>God morgon, <span id="greetingName">bonde</span>!</p>
+              <h2>Din gård väntar.</h2>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-top">
+                <span>GÅRDSNIVÅ</span>
+                <span id="levelNum">01</span>
+              </div>
+              <strong id="levelTitle">Nivå 1</strong>
+              <div class="bar"><i id="levelBar" style="width: 12.5%"></i></div>
+            </div>
+          </div>
+
+          <div class="farm-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h3>Din mark</h3>
+                <button class="panel-link" data-view="challenge">
+                  Öppna nästa uppdrag →
+                </button>
+              </div>
+              <div class="fields" id="farmFields"></div>
+            </section>
+
+            <section class="quest">
+              <div class="eyebrow" id="questEyebrow">UPPDRAG 01</div>
+              <h3 id="questTitle">Döp din gård med Java</h3>
+              <p id="questDescription">
+                Din gård behöver ett namn. Lär dig skapa en text och skriva ut
+                den i konsolen.
+              </p>
+              <button class="primary" id="questButton" data-view="challenge">
+                Börja lektionen
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </section>
+          </div>
+
+          <section class="panel" style="margin-top: 18px">
+            <div class="panel-head">
+              <h3>Din Java-resa</h3>
+              <span class="panel-link" id="lessonProgress">0 av 8 klara</span>
+            </div>
+            <div class="lesson-list" id="lessonList"></div>
+          </section>
+        </div>
+
+        <div class="play-view" id="shopView">
+          <div class="heading">
+            <div>
+              <p>Använd dina insamlade Farmcoins</p>
+              <h2>Bondebutiken</h2>
+            </div>
+          </div>
+          <p style="color: var(--muted); margin-bottom: 20px;">
+            Klara uppdrag för att tjäna +10 Farmcoins per uppdrag och lås upp nya utseenden för din bonde!
+          </p>
+          <div class="shop-grid" id="shopGrid"></div>
+        </div>
+
+        <div class="play-view" id="challengeView">
+          <div class="challenge">
+            <button class="back-link" data-view="dashboard">
+              ← Tillbaka till gården
+            </button>
+            <div class="challenge-head">
+              <div>
+                <div class="eyebrow" id="challengeEyebrow">UPPDRAG 01</div>
+                <h2 id="challengeTitle">Ge gården ett namn.</h2>
+                <p id="challengeDescription">
+                  En riktig bonde börjar med ett namn. Skriv Java-kod som sparar
+                  gårdens namn och skriver ut det i konsolen.
+                </p>
+              </div>
+            </div>
+
+            <div class="code-layout">
+              <div>
+                <div class="code-box">
+                  <div class="code-top">
+                    <i class="dot"></i><i class="dot"></i><i class="dot"></i>
+                    <span id="challengeFile" style="margin-left: 6px">
+                      FarmName.java
+                    </span>
+                  </div>
+                  <textarea id="codeInput" spellcheck="false"></textarea>
+                  <button class="run" id="runCode">
+                    <span id="playIcon"></span> Kör kod
+                  </button>
+                  <div class="feedback" id="feedback"></div>
+                </div>
+              </div>
+
+              <div class="hint">
+                <h3>Din ledtråd</h3>
+                <button class="toggle-hint-btn" id="toggleHintBtn">
+                  <span id="hintBtnIcon"></span>
+                  <span id="hintBtnText">Visa hint</span>
+                </button>
+                <div id="hintContent" class="hidden">
+                  <p id="hintDescription">
+                    Skapa en variabel av typen <code>String</code> och använd sedan
+                    <code>System.out.println()</code> för att skriva ut den.
+                  </p>
+                  <p id="hintExample" style="margin: 0">
+                    Exempel: <code>String name = "...";</code>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <div class="modal-back hidden" id="modalBack">
+      <div class="modal">
+        <button class="close" id="closeModal">×</button>
+        <h2 id="modalTitle">Välkommen, kodbonde.</h2>
+        <p id="modalIntro">
+          Skapa ditt konto och plantera din första rad Java.
+        </p>
+        <div class="tabs">
+          <button id="signupTab" class="active">Skapa konto</button>
+          <button id="loginTab">Logga in</button>
+        </div>
+        <form id="authForm">
+          <div class="field" id="nameField">
+            <label for="nameInput">Vad heter du?</label>
+            <input id="nameInput" required placeholder="t.ex. Alex" />
+          </div>
+          <div class="field">
+            <label for="emailInput">E-post</label>
+            <input
+              id="emailInput"
+              type="email"
+              required
+              placeholder="du@exempel.se"
+            />
+          </div>
+          <div class="field">
+            <label for="passwordInput">Lösenord</label>
+            <input
+              id="passwordInput"
+              type="password"
+              required
+              placeholder="Minst 6 tecken"
+            />
+          </div>
+          <button class="primary form-submit" type="submit" id="submitAuth">
+            Skapa min gård →
+          </button>
+        </form>
+        <div class="notice">
+          Genom att fortsätta godkänner du att FarmByte får komma ihåg din
+          spelprogress.
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
