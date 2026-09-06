@@ -820,15 +820,16 @@
         background: #94bd67;
       }
 
-      .code-box textarea {
-        background: #213634;
-        border: 0;
-        color: #ecf7d8;
+      .code-box .CodeMirror {
         min-height: 220px;
-        resize: vertical;
+        border-radius: 7px;
         line-height: 1.65;
         font-size: 13px;
         font-family: "DM Mono", monospace;
+      }
+
+      .code-box .CodeMirror-focused {
+        box-shadow: 0 0 0 3px #b5d34c40;
       }
 
       .run {

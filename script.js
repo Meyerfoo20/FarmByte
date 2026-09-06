@@ -1,5 +1,18 @@
 const $ = (s) => document.querySelector(s);
 
+const codeEditor = CodeMirror($("#codeInput"), {
+  mode: "text/x-java",
+  theme: "material-darker",
+  lineNumbers: true,
+  indentUnit: 2,
+  tabSize: 2,
+  indentWithTabs: false,
+  lineWrapping: true,
+  autoCloseBrackets: true,
+  matchBrackets: true,
+  autofocus: false
+});
+
 const ICONS = {
   home: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
   learn: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
@@ -391,7 +404,7 @@ function updateUI() {
     $("#hintBtnText").textContent = "Visa hint";
 
     if (!$("#codeInput").dataset.loadedFor || $("#codeInput").dataset.loadedFor != questIdx) {
-      $("#codeInput").value = currentQuestData.template;
+      codeEditor.setValue(currentQuestData.template);
       $("#codeInput").dataset.loadedFor = questIdx;
     }
   }
@@ -469,7 +482,7 @@ $("#runCode").onclick = () => {
   if (questIdx >= QUESTS.length) return;
 
   const currentQuest = QUESTS[questIdx];
-  const code = $("#codeInput").value;
+  const code = codeEditor.getValue();
   const feedback = $("#feedback");
 
   feedback.style.display = "block";
