@@ -44,3 +44,8 @@ Uppdrag 06: Skapa en metod (vattnaAker()) för att automatisera bevattningen.
 Uppdrag 07: Skapa klasser och objekt för dina djur på gården.
 
 Uppdrag 08: Sälj din skörd på torget med en while-loop och tjäna guld.
+
+![Spelvy](assets/code.png)
+
+# Butik
+![Spelvy](assets/store.png)
